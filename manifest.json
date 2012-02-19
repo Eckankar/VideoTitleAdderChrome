@@ -1,6 +1,6 @@
 {
     "name": "YouTube Title Adder",
-    "version": "1.1.1",
+    "version": "1.2.0",
 
     "description": "Preloads any YouTube links and appends the title of the video to the link in the referring page.",
     "icons": {  "32": "icons/icon32.png",
@@ -11,7 +11,8 @@
     "content_scripts": [ {
         "exclude_globs": [ "http://*.youtube.com/*", "http://youtube.com/*", "http://*.google.*/search\\?*" ],
         "include_globs": [ "*" ],
-        "js": [ "script.js" ],
+        "css": [ "inject.css" ],
+        "js": [ "jquery.min.js", "jquery.simpletip-1.3.1.pack.js", "script.js" ],
         "matches": [ "http://*/*", "https://*/*" ]
     } ],
 

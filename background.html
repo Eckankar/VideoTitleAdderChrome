@@ -8,7 +8,7 @@ chrome.extension.onRequest.addListener(
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {
                     console.log("Successful.");
-                    sendResponse({response: JSON.parse(xhr.responseText), i: request.i, videoid: request.videoid});
+                    sendResponse({response: JSON.parse(xhr.responseText), videoid: request.videoid});
                 } else {
                     console.log("Hmm. Failed for " + request.videoid + ".");
                 }

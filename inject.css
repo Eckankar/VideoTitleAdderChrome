@@ -1,0 +1,43 @@
+.ytta-embed-icon {
+    padding-left: 3px;
+    display: inline;
+}
+
+.ytta-embed-icon:hover {
+    cursor: pointer;
+}
+
+.ytta-embed-disabled {
+    display: none;
+}
+
+.ytta-embed-enabled {
+    display: block;
+}
+
+.ytta-tooltip {
+    position: absolute;
+    z-index: 100;
+    display: none;
+    top: 0;
+    left: 0;
+
+    background-color: white;
+    border: 1px solid black;
+}
+
+.ytta-tooltip h1 {
+    font-size: 9pt;
+    max-width: 360px;
+}
+
+.ytta-vote-up {
+    background-color: green;
+    height: 3px;
+}
+.ytta-vote-down {
+    background-color: red;
+    height: 3px;
+    width: 100%;
+    padding: 0px;
+}
