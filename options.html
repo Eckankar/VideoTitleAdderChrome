@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta name="generator" content=
+  "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org" />
+<script type="text/javascript">
+// Saves options to localStorage.
+function save_options() {
+  var opts = ["textlinks", "imglinks", "embed", "replacename"];
+  var bgPage = chrome.extension.getBackgroundPage();
+
+  for (var i = 0; i < opts.length; i++) {
+    var option = opts[i];
+    
+    var elms = document.getElementsByName(option);
+    for (var j = 0; j < elms.length; j++) {
+      var child = elms[j];
+      if (child.checked) {
+        bgPage.localStorage[option] = child.value;
+        break;
+      }
+    }
+  }
+}
+
+// Restores select box state to saved value from localStorage.
+function restore_options() {
+  var opts = new Array(["textlinks", 1], ["imglinks", 0], ["embed", 1], ["replacename", 0]);
+  var bgPage = chrome.extension.getBackgroundPage();
+
+  console.log(bgPage.localStorage);
+  
+  for (var i = 0; i < opts.length; i++) {
+    var option = opts[i];
+    var favorite = bgPage.localStorage[option[0]];
+    if (!favorite) {
+      favorite = localStorage[option[0]];
+      if (favorite) {
+        bgPage.localStorage[option[0]] = favorite;
+      } else {
+        favorite = option[1];
+      }
+    }
+    var elms = document.getElementsByName(option[0]);
+    for (var j = 0; j < elms.length; j++) {
+      var child = elms[j];
+      if (child.value == favorite) {
+        child.checked = "true";
+        break;
+      }
+    }
+  }
+
+}
+
+</script>
+  <title></title>
+</head>
+
+<body onload="restore_options()">
+  <div id="optionsDiv" class="" style=
+  "padding: 10px; text-align: justify;">
+    <center>
+      <font size="+1"><a target="_blank" href=
+      "https://chrome.google.com/webstore/detail/ddpephnhacfpgcemhioaejgenlgadnnh">YouTube Title
+      Adder</a> Options</font>
+    </center>
+
+    <form name="titleform" id="YTTA">
+      <ul>
+        <li>Names on YouTube Text Links:<br />
+        <input type="radio" value="1" name="textlinks" id="linkon" />
+        Enabled<br />
+        <input type="radio" value="0" name="textlinks" id="linkoff" />
+        Disabled<br /></li>
+
+        <li>Names on YouTube Image Links:<br />
+        <input type="radio" value="1" name="imglinks" id="imageon" />
+        Enabled<br />
+        <input type="radio" value="0" name="imglinks" id="imageoff" />
+        Disabled<br /></li>
+
+        <li>Replace link text if it's just an url:<br />
+        <input type="radio" value="1" name="replacename" id="imageon" />
+        Enabled<br />
+        <input type="radio" value="0" name="replacename" id="imageoff" />
+        Disabled<br /></li>
+
+        <li>Embed Buttons for YouTube Links:<br />
+        <input type="radio" value="1" name="embed" id="embedon" />
+        Enabled<br />
+        <input type="radio" value="0" name="embed" id="embedoff" />
+        Disabled<br /></li>
+      </ul>
+
+      <center>
+        <button onclick="save_options()">Save</button>
+      </center>
+    </form>
+  </div>
+</body>
+</html>
