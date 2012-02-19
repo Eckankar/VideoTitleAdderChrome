@@ -114,10 +114,12 @@ function addTitle(resp) {
                        'height=' + thumb['height'] + '/>';
         }
         tooltip += '</div>';
-        tooltip += '<div class="'+YTTA.CLASS_DOWNVOTES+'">';
-        tooltip += '<div class="'+YTTA.CLASS_UPVOTES+'" '+
-                   'style="width: '+upvotepercent+'%"></span>';
-        tooltip += '</div>';
+        if (upvotepercent) {
+            tooltip += '<div class="'+YTTA.CLASS_DOWNVOTES+'">';
+            tooltip += '<div class="'+YTTA.CLASS_UPVOTES+'" '+
+                    'style="width: '+upvotepercent+'%"></span>';
+            tooltip += '</div>';
+        }
 
         e.simpletip( {
             baseClass: 'ytta-tooltip',
@@ -137,8 +139,13 @@ function getThumbnails(gdata) {
 }
 
 function getUpvotePercent(gdata) {
-    var rating = gdata.entry.gd$rating;
-    return 100*(rating.average - rating.min)/(rating.max - rating.min)
+    try {
+        var rating = gdata.entry.gd$rating;
+        var percentage = 100*(rating.average - rating.min)/(rating.max - rating.min);
+        return percentage;
+    } catch (e) {
+        return undefined;
+    }
 }
 
 function extractTime(url) {
