@@ -172,10 +172,10 @@ function extractTime(url) {
 function embedCode(id, time) {
     return '<object width="425" height="355">' +
            '<param name="movie" ' +
-                   'value="http://www.youtube.com/v/' + id + '?version=3&autohide=1&showinfo=0&fs=1&start=' + time + '"></param>' +
+                   'value="//www.youtube.com/v/' + id + '?version=3&autohide=1&showinfo=0&fs=1&start=' + time + '"></param>' +
            '<param name="allowScriptAccess" value="always"></param>' +
            '<param name="allowFullScreen" value="true"></param>' +
-           '<embed src="http://www.youtube.com/v/' + id + '?version=3&autohide=1&showinfo=0&fs=1&start=' + time + '" ' +
+           '<embed src="//www.youtube.com/v/' + id + '?version=3&autohide=1&showinfo=0&fs=1&start=' + time + '" ' +
                    'type="application/x-shockwave-flash" ' +
                    'allowscriptaccess="always" ' +
                    'allowfullscreen="true" ' +
