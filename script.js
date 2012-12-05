@@ -18,12 +18,12 @@ YTTA.EMBED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/embed.ico';
 
 
 $(document).ready(function () {
-    chrome.extension.sendMessage({name : 'options'}, function (resp) {
-        YTTA.links = resp["textlinks"] ? resp["textlinks"]*1 : 1;
-        YTTA.image = resp["imglinks"] ? resp["imglinks"]*1 : 0;
-        YTTA.embedimage = resp["embed"] ? resp["embed"]*1 : 1;
-        YTTA.replacename = resp["replacename"] ? resp["replacename"]*1 : 0;
-        YTTA.tooltip = resp["tooltip"] ? resp["tooltip"]*1 : 1;
+    chrome.extension.sendMessage({name : 'getOptions'}, function (resp) {
+        YTTA.links = resp["textlinks"]*1;
+        YTTA.image = resp["imglinks"]*1;
+        YTTA.embedimage = resp["embed"]*1;
+        YTTA.replacename = resp["replacename"]*1;
+        YTTA.tooltip = resp["tooltip"]*1;
 
         // http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/
         document.addEventListener('webkitAnimationStart', function (e) {

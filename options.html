@@ -6,61 +6,12 @@
 <head>
   <meta name="generator" content=
   "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org" />
-<script type="text/javascript">
-// Saves options to localStorage.
-function save_options() {
-  var opts = ["textlinks", "imglinks", "embed", "replacename", "tooltip"];
-  var bgPage = chrome.extension.getBackgroundPage();
-
-  for (var i = 0; i < opts.length; i++) {
-    var option = opts[i];
-    
-    var elms = document.getElementsByName(option);
-    for (var j = 0; j < elms.length; j++) {
-      var child = elms[j];
-      if (child.checked) {
-        bgPage.localStorage[option] = child.value;
-        break;
-      }
-    }
-  }
-}
-
-// Restores select box state to saved value from localStorage.
-function restore_options() {
-  var opts = new Array(["textlinks", 1], ["imglinks", 0], ["embed", 1], ["replacename", 0], ["tooltip", "1"]);
-  var bgPage = chrome.extension.getBackgroundPage();
-
-  console.log(bgPage.localStorage);
-  
-  for (var i = 0; i < opts.length; i++) {
-    var option = opts[i];
-    var favorite = bgPage.localStorage[option[0]];
-    if (!favorite) {
-      favorite = localStorage[option[0]];
-      if (favorite) {
-        bgPage.localStorage[option[0]] = favorite;
-      } else {
-        favorite = option[1];
-      }
-    }
-    var elms = document.getElementsByName(option[0]);
-    for (var j = 0; j < elms.length; j++) {
-      var child = elms[j];
-      if (child.value == favorite) {
-        child.checked = "true";
-        break;
-      }
-    }
-  }
-
-}
-
-</script>
+  <script src="jquery.min.js"></script>
+  <script src="options.js"></script>
   <title></title>
 </head>
 
-<body onload="restore_options()">
+<body>
   <div id="optionsDiv" class="" style=
   "padding: 10px; text-align: justify;">
     <center>
@@ -96,14 +47,14 @@ function restore_options() {
         Disabled<br /></li>
 
         <li>Show tooltip with information when hovering over YouTube links:<br />
-        <input type="radio" value="1" name="embed" id="tooltipon" />
+        <input type="radio" value="1" name="tooltip" id="tooltipon" />
         Enabled<br />
-        <input type="radio" value="0" name="embed" id="tooltipoff" />
+        <input type="radio" value="0" name="tooltip" id="tooltipoff" />
         Disabled<br /></li>
       </ul>
 
       <center>
-        <button onclick="save_options()">Save</button>
+        <button id="save_options_button">Save</button>
       </center>
     </form>
   </div>

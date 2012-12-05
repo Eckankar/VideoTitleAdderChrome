@@ -14,14 +14,29 @@ chrome.extension.onMessage.addListener(
             }
         }
         xhr.send();
-    }
-    if (request.name == "options") {
+    } else if (request.name == "getOptions") {
+        var defaults = {
+            "textlinks":   1,
+            "imglinks":    0,
+            "embed":       1,
+            "replacename": 1,
+            "tooltip":     1
+        };
+
         var resp = {};
-        for (var i = 0; i < localStorage.length; i++) {
-            var key = localStorage.key(i);
+        for (var key in defaults) {
+            if (!localStorage[key]) {
+                localStorage[key] = defaults[key];
+            }
+
             resp[key] = localStorage[key];
         }
         sendResponse(resp);
+    } else if (request.name == "setOptions") {
+        var options = request.options;
+        for (var key in options) {
+            localStorage[key] = options[key];
+        }
     }
   }
 );
