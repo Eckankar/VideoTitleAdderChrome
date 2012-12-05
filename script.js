@@ -18,16 +18,19 @@ YTTA.EMBED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/embed.ico';
 
 
 $(document).ready(function () {
-    chrome.extension.sendRequest({name : 'options'}, function (resp) {
+    chrome.extension.sendMessage({name : 'options'}, function (resp) {
         YTTA.links = resp["textlinks"] ? resp["textlinks"]*1 : 1;
         YTTA.image = resp["imglinks"] ? resp["imglinks"]*1 : 0;
         YTTA.embedimage = resp["embed"] ? resp["embed"]*1 : 1;
         YTTA.replacename = resp["replacename"] ? resp["replacename"]*1 : 0;
         YTTA.tooltip = resp["tooltip"] ? resp["tooltip"]*1 : 1;
 
-        $('body').on('DOMNodeInserted', function (e) {
-            youtubifyLinks(e.target);
-        });
+        // http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/
+        document.addEventListener('webkitAnimationStart', function (e) {
+            if (e.animationName == 'ytta-linkInserted') {
+                youtubifyLinks(e.target);
+            }
+        }, false);
 
         youtubifyLinks('body');
     });
@@ -44,7 +47,7 @@ function youtubifyLinks(target) {
             e.attr(YTTA.ATTR_ID, id);
             e.attr(YTTA.ATTR_ORIG_HTML, e.html());
 
-            chrome.extension.sendRequest({
+            chrome.extension.sendMessage({
                 "name": "fetchPage",
                 "videoid": id,
             }, addTitle);
@@ -56,7 +59,6 @@ function addTitle(resp) {
     var gdata = resp.response;
     var id = resp.videoid;
 
-    console.log(gdata);
     var title = gdata.entry.title.$t;
     var thumbnails = getThumbnails(gdata);
     var upvotepercent = getUpvotePercent(gdata);

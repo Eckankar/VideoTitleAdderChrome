@@ -41,3 +41,13 @@
     width: 100%;
     padding: 0px;
 }
+
+@-webkit-keyframes ytta-linkInserted {
+    from { clip: rect(1px, auto, auto, auto); }
+    to   { clip: rect(0px, auto, auto, auto); }
+}
+
+a {
+    -webkit-animation-duration: 0.001s !important;
+    -webkit-animation-name: ytta-linkInserted !important;
+}
