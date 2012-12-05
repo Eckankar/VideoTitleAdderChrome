@@ -110,7 +110,6 @@ function addTitle(resp) {
         tooltip += '<div>';
         for (var i = 0; i < thumbnails.length; i++) {
             var thumb = thumbnails[i];
-            console.log(thumb);
             tooltip += '<img src="' + thumb['url'] + '" ' +
                        'width=' + thumb['width'] + ' ' +
                        'height=' + thumb['height'] + '/>';
