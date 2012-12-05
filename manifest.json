@@ -7,6 +7,9 @@
                 "48": "icons/icon48.png",
                "128": "icons/icon128.png" },
 
+    "web_accessible_resources": [
+        "embed.ico"
+    ],
 
     "content_scripts": [ {
         "exclude_globs": [ "http://*.youtube.com/*", "http://youtube.com/*", "http://*.google.*/search\\?*" ],
@@ -20,6 +23,11 @@
         "http://gdata.youtube.com/"
     ],
 
+    "manifest_version": 2,
+
     "options_page": "options.html",
-    "background_page": "background.html"
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    }
 }

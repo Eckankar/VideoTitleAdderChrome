@@ -1,5 +1,4 @@
-<script>
-chrome.extension.onRequest.addListener(
+chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.name == "fetchPage") {
         var xhr = new XMLHttpRequest();
@@ -26,4 +25,3 @@ chrome.extension.onRequest.addListener(
     }
   }
 );
-</script>
