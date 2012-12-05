@@ -14,6 +14,7 @@ chrome.extension.onMessage.addListener(
             }
         }
         xhr.send();
+        return true;
     } else if (request.name == "getOptions") {
         var defaults = {
             "textlinks":   1,
