@@ -17,11 +17,13 @@ chrome.extension.onMessage.addListener(
         return true;
     } else if (request.name == "getOptions") {
         var defaults = {
-            "textlinks":   1,
-            "imglinks":    0,
-            "embed":       1,
-            "replacename": 1,
-            "tooltip":     1
+            "textlinks":        1,
+            "imglinks":         0,
+            "embed":            1,
+            "replacename":      1,
+            "tooltip":          1,
+            "timestamp":        0,
+            "timestamptooltip": 1,
         };
 
         var resp = {};

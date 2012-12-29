@@ -12,6 +12,7 @@ YTTA.CLASS_DOWNVOTES = 'ytta-vote-down';
 YTTA.CLASS_EMBED_ICON = 'ytta-embed-icon';
 YTTA.CLASS_EMBED_DISABLED = 'ytta-embed-disabled';
 YTTA.CLASS_EMBED_ENABLED = 'ytta-embed-enabled';
+YTTA.CLASS_VIDEOLENGTH = 'ytta-video-length';
 
 YTTA.EXTENSION_ID = chrome.i18n.getMessage('@@extension_id');
 YTTA.EMBED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/embed.ico';
@@ -24,6 +25,8 @@ $(document).ready(function () {
         YTTA.embedimage = resp["embed"]*1;
         YTTA.replacename = resp["replacename"]*1;
         YTTA.tooltip = resp["tooltip"]*1;
+        YTTA.timestamp = resp["timestamp"]*1;
+        YTTA.timestamptooltip = resp["timestamptooltip"]*1;
 
         // http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/
         document.addEventListener('webkitAnimationStart', function (e) {
@@ -60,6 +63,7 @@ function addTitle(resp) {
     var id = resp.videoid;
 
     var title = gdata.entry.title.$t;
+    var videolength = getVideoLength(gdata);
     var thumbnails = getThumbnails(gdata);
     var upvotepercent = getUpvotePercent(gdata);
 
@@ -68,7 +72,9 @@ function addTitle(resp) {
 
     var isImage = e.find('img').length > 0;
     if (YTTA.links && !isImage || YTTA.image && isImage) {
-        var text = '<b>YT: ' + title + '</b>';
+        var text = '<b>YT: ' + title;
+        if (YTTA.timestamp) { text += ' (' + videolength + ')'; }
+        text += '</b>';
 
         var orightml = e.attr(YTTA.ATTR_ORIG_HTML);
         if (!YTTA.replacename || orightml.search('http://') == -1) {
@@ -105,7 +111,9 @@ function addTitle(resp) {
     }
 
     if (YTTA.tooltip) {
-        var tooltip = "<h1>" + title + "</h1>";
+        var tooltip = '<h1>' + title;
+        if (YTTA.timestamptooltip) { tooltip += '<span class="'+YTTA.CLASS_VIDEOLENGTH+'">(' + videolength + ')</span>'; }
+        tooltip += '</h1>';
 
         tooltip += '<div>';
         for (var i = 0; i < thumbnails.length; i++) {
@@ -168,6 +176,23 @@ function extractTime(url) {
     }
 
     return time;
+}
+
+function getVideoLength(gdata) {
+    var secs = gdata.entry.media$group.yt$duration.seconds;
+    var length = "";
+    
+    if (secs >= 60*60) {
+        var hrs = Math.floor(secs / (60*60));
+        secs -= hrs * 60 * 60;
+        length += hrs + ":";
+    }
+    
+    var mins = Math.floor(secs / 60);
+    secs -= mins * 60;
+    length += mins + ":" + secs;
+    
+    return length;
 }
 
 function embedCode(id, time) {

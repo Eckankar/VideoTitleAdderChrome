@@ -51,3 +51,9 @@ a {
     -webkit-animation-duration: 0.001s !important;
     -webkit-animation-name: ytta-linkInserted !important;
 }
+
+.ytta-video-length {
+    font-size: x-small;
+    color: gray;
+    padding-left: 0.5em;
+}
