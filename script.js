@@ -178,20 +178,31 @@ function extractTime(url) {
     return time;
 }
 
+// Based on http://stackoverflow.com/q/1267283/79061 and http://gugod.org/2007/09/padding-zero-in-javascript/
+function zeroPad(n, len) {
+    return (new Array(len).join("0") + n).slice(-len);
+}
+
 function getVideoLength(gdata) {
     var secs = gdata.entry.media$group.yt$duration.seconds;
+    var mins = 0, hrs = 0;
     var length = "";
-    
+
     if (secs >= 60*60) {
-        var hrs = Math.floor(secs / (60*60));
+        hrs = Math.floor(secs / (60*60));
         secs -= hrs * 60 * 60;
-        length += hrs + ":";
     }
-    
-    var mins = Math.floor(secs / 60);
+
+    mins = Math.floor(secs / 60);
     secs -= mins * 60;
-    length += mins + ":" + secs;
-    
+
+    if (hrs > 0) {
+        length = hrs + ":" + zeroPad(mins, 2);
+    } else {
+        length = mins;
+    }
+    length += ":" + zeroPad(secs, 2);
+
     return length;
 }
 
