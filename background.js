@@ -28,7 +28,7 @@ chrome.extension.onMessage.addListener(
 
         var resp = {};
         for (var key in defaults) {
-            if (!localStorage[key]) {
+            if (!(key in localStorage)) {
                 localStorage[key] = defaults[key];
             }
 

@@ -1,6 +1,6 @@
 {
     "name": "YouTube Title Adder",
-    "version": "1.2.3",
+    "version": "1.2.4",
 
     "description": "Preloads any YouTube links and appends the title of the video to the link in the referring page.",
     "icons": {  "32": "icons/icon32.png",
