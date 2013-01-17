@@ -26,9 +26,15 @@
     border: 1px solid black;
 }
 
-.ytta-tooltip h1 {
+/* div. to increase specificity; makes the border override on reddit comments */
+div.ytta-tooltip h1 {
     font-size: 9pt;
     max-width: 360px;
+    border: 0px;
+}
+
+.ytta-tooltip div img {
+    display: inline-block;
 }
 
 .ytta-vote-up {
