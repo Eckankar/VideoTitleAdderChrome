@@ -89,35 +89,37 @@ function addTitle(resp) {
         e.html(text);
     }
 
-    if (YTTA.embedimage) {
-        var starttime = extractTime(e.attr('href'));
-        var embed = embedCode(id, starttime);
+    if (!isImage) {
+        if (YTTA.embedimage) {
+            var starttime = extractTime(e.attr('href'));
+            var embed = embedCode(id, starttime);
 
-        e.after('<img src="' + YTTA.EMBED_IMG + '" ' +
-                'class="' + YTTA.CLASS_EMBED_ICON + '" ' +
-                'title="Click to play video inline." />' +
-                '<div class="' + YTTA.CLASS_EMBED_DISABLED + '">' +
-                    embed +
-                '</div>');
+            e.after('<img src="' + YTTA.EMBED_IMG + '" ' +
+                    'class="' + YTTA.CLASS_EMBED_ICON + '" ' +
+                    'title="Click to play video inline." />' +
+                    '<div class="' + YTTA.CLASS_EMBED_DISABLED + '">' +
+                        embed +
+                    '</div>');
 
 
-        var embedimg = e.next();
-        embedimg.on('click', function (e) {
-            var embeddiv = $(e.target).next();
-            if (embeddiv.hasClass(YTTA.CLASS_EMBED_DISABLED)) {
-                embeddiv.removeClass(YTTA.CLASS_EMBED_DISABLED);
-                embeddiv.addClass(YTTA.CLASS_EMBED_ENABLED);
-            } else {
-                embeddiv.removeClass(YTTA.CLASS_EMBED_ENABLED);
-                embeddiv.addClass(YTTA.CLASS_EMBED_DISABLED);
-            }
-        });
-    }
+            var embedimg = e.next();
+            embedimg.on('click', function (e) {
+                var embeddiv = $(e.target).next();
+                if (embeddiv.hasClass(YTTA.CLASS_EMBED_DISABLED)) {
+                    embeddiv.removeClass(YTTA.CLASS_EMBED_DISABLED);
+                    embeddiv.addClass(YTTA.CLASS_EMBED_ENABLED);
+                } else {
+                    embeddiv.removeClass(YTTA.CLASS_EMBED_ENABLED);
+                    embeddiv.addClass(YTTA.CLASS_EMBED_DISABLED);
+                }
+            });
+        }
 
-    if (isrestricted && YTTA.restrictedicon) {
-        e.after('<img src="' + YTTA.RESTRICTED_IMG + '" ' +
-                'class="' + YTTA.CLASS_RESTRICTED_ICON + '" ' +
-                'title="This video is restricted in your country" />');
+        if (isrestricted && YTTA.restrictedicon) {
+            e.after('<img src="' + YTTA.RESTRICTED_IMG + '" ' +
+                    'class="' + YTTA.CLASS_RESTRICTED_ICON + '" ' +
+                    'title="This video is restricted in your country" />');
+        }
     }
 
     if (YTTA.tooltip) {
