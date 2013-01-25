@@ -1,4 +1,6 @@
-.ytta-embed-icon {
+/* reddit specificity fix */
+html body img.ytta-restricted-icon,
+html body img.ytta-embed-icon {
     padding-left: 3px;
     display: inline;
 }

@@ -12,10 +12,12 @@ YTTA.CLASS_DOWNVOTES = 'ytta-vote-down';
 YTTA.CLASS_EMBED_ICON = 'ytta-embed-icon';
 YTTA.CLASS_EMBED_DISABLED = 'ytta-embed-disabled';
 YTTA.CLASS_EMBED_ENABLED = 'ytta-embed-enabled';
+YTTA.CLASS_RESTRICTED_ICON = 'ytta-restricted-icon';
 YTTA.CLASS_VIDEOLENGTH = 'ytta-video-length';
 
 YTTA.EXTENSION_ID = chrome.i18n.getMessage('@@extension_id');
 YTTA.EMBED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/embed.ico';
+YTTA.RESTRICTED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/restricted.gif';
 
 
 $(document).ready(function () {
@@ -27,6 +29,7 @@ $(document).ready(function () {
         YTTA.tooltip = resp["tooltip"]*1;
         YTTA.timestamp = resp["timestamp"]*1;
         YTTA.timestamptooltip = resp["timestamptooltip"]*1;
+        YTTA.restrictedicon = resp["restrictedicon"]*1;
 
         // http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/
         document.addEventListener('webkitAnimationStart', function (e) {
@@ -66,6 +69,7 @@ function addTitle(resp) {
     var videolength = getVideoLength(gdata);
     var thumbnails = getThumbnails(gdata);
     var upvotepercent = getUpvotePercent(gdata);
+    var isrestricted = getRestrictedInfo(gdata);
 
     var e = $('a['+YTTA.ATTR_ID+'='+id+']:not(['+YTTA.ATTR_VISITED+'])').first();
     e.attr(YTTA.ATTR_VISITED, 'true');
@@ -108,6 +112,12 @@ function addTitle(resp) {
                 embeddiv.addClass(YTTA.CLASS_EMBED_DISABLED);
             }
         });
+    }
+
+    if (isrestricted && YTTA.restrictedicon) {
+        e.after('<img src="' + YTTA.RESTRICTED_IMG + '" ' +
+                'class="' + YTTA.CLASS_RESTRICTED_ICON + '" ' +
+                'title="This video is restricted in your country" />');
     }
 
     if (YTTA.tooltip) {
@@ -204,6 +214,15 @@ function getVideoLength(gdata) {
     length += ":" + zeroPad(secs, 2);
 
     return length;
+}
+
+function getRestrictedInfo(gdata) {
+    try {
+        var state = gdata.entry.app$control.yt$state;
+        return state.name == 'restricted' && state.reasonCode == 'requesterRegion';
+    } catch (e) {
+        return false;
+    }
 }
 
 function embedCode(id, time) {

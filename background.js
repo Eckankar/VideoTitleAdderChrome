@@ -24,6 +24,7 @@ chrome.extension.onMessage.addListener(
             "tooltip":          1,
             "timestamp":        0,
             "timestamptooltip": 1,
+            "restrictedicon":   1,
         };
 
         var resp = {};
