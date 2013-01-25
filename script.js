@@ -1,6 +1,6 @@
 var YTTA = function () {};
 
-YTTA.URLREGEX = /(?:youtube\.com\/watch\?.*v=|youtu\.be\/)([-_A-Za-z0-9]{11})/i;
+YTTA.URLREGEX = /(?:youtube\.com\/watch\?.*v=|youtu\.be\/|y2u\.be\/)([-_A-Za-z0-9]{11})/i;
 YTTA.ATTR_ID = 'data-ytta-id';
 YTTA.ATTR_EMBED_ID = 'data-ytta-embed-id';
 YTTA.ATTR_ORIG_HTML = 'data-ytta-html';
