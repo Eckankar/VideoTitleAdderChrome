@@ -31,13 +31,18 @@ $(document).ready(function () {
         YTTA.timestamptooltip = resp["timestamptooltip"]*1;
         YTTA.restrictedicon = resp["restrictedicon"]*1;
 
-        // http://www.backalleycoder.com/2012/04/25/i-want-a-damnodeinserted/
-        document.addEventListener('webkitAnimationStart', function (e) {
-            if (e.animationName == 'ytta-linkInserted') {
-                youtubifyLinks(e.target);
-            }
-        }, false);
-
+        var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
+        var observer = new MutationObserver( function (mutations) {
+            mutations.forEach( function (mutation) {
+                if (mutation.type == 'childList') {
+                    [].slice.call(mutation.addedNodes).forEach(youtubifyLinks);
+                }
+            } );
+        } );
+        observer.observe($('body').get(0), {
+            childList: true,
+            subtree: true,
+        });
         youtubifyLinks('body');
     });
 });
