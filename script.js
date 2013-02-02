@@ -50,6 +50,11 @@ $(document).ready(function () {
 function youtubifyLinks(target) {
     $(target).find('a[href]:not(['+YTTA.ATTR_ID+'])').each( function (i, elm) {
         var e = $(elm);
+
+        // Don't replace links in Twitter's "What's happening" box.
+        if (e.hasClass('twitter-timeline-link') &&
+            e.closest('.tweet-form').length > 0) { return; }
+
         e.attr(YTTA.ATTR_ID, '-');
 
         var match = e.attr('href').match(YTTA.URLREGEX);
