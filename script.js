@@ -30,6 +30,7 @@ $(document).ready(function () {
         YTTA.timestamp = resp["timestamp"]*1;
         YTTA.timestamptooltip = resp["timestamptooltip"]*1;
         YTTA.restrictedicon = resp["restrictedicon"]*1;
+        YTTA.embedleft = resp["embedleft"]*1;
 
         var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
         var observer = new MutationObserver( function (mutations) {
@@ -104,15 +105,22 @@ function addTitle(resp) {
             var starttime = extractTime(e.attr('href'));
             var embed = embedCode(id, starttime);
 
-            e.after('<img src="' + YTTA.EMBED_IMG + '" ' +
-                    'class="' + YTTA.CLASS_EMBED_ICON + '" ' +
-                    'title="Click to play video inline." />' +
-                    '<div class="' + YTTA.CLASS_EMBED_DISABLED + '">' +
-                        embed +
-                    '</div>');
+            var embedhtml = '<img src="' + YTTA.EMBED_IMG + '" ' +
+                            'class="' + YTTA.CLASS_EMBED_ICON + '" ' +
+                            'title="Click to play video inline." />' +
+                            '<div class="' + YTTA.CLASS_EMBED_DISABLED + '">' +
+                            embed +
+                            '</div>';
+            var embedimg;
 
+            if (YTTA.embedleft) {
+                e.before(embedhtml);
+                embedimg = e.prev().prev();
+            } else {
+                e.after(embedhtml);
+                embedimg = e.next();
+            }
 
-            var embedimg = e.next();
             embedimg.on('click', function (e) {
                 var embeddiv = $(e.target).next();
                 if (embeddiv.hasClass(YTTA.CLASS_EMBED_DISABLED)) {

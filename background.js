@@ -20,6 +20,7 @@ chrome.extension.onMessage.addListener(
             "textlinks":        1,
             "imglinks":         0,
             "embed":            1,
+            "embedleft":        0,
             "replacename":      1,
             "tooltip":          1,
             "timestamp":        0,
