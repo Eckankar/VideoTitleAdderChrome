@@ -8,7 +8,7 @@
                "128": "icons/icon128.png" },
 
     "web_accessible_resources": [
-        "icons/embed.ico",
+        "icons/embed.svg",
         "icons/restricted.gif"
     ],
 

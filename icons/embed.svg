@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   id="Capa_1"
+   x="0px"
+   y="0px"
+   width="14"
+   height="12"
+   viewBox="0 0 14 12"
+   enable-background="new 0 0 16 14"
+   xml:space="preserve"
+   inkscape:version="0.48.5 r10040"
+   sodipodi:docname="embed.svg"
+   inkscape:export-filename="C:\Users\Sebastian\Dropbox\code\Chrome\Video Title Adder\icons\embed.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90"><metadata
+   id="metadata13"><rdf:RDF><cc:Work
+       rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
+         rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
+   id="defs11">
+	
+	
+</defs><sodipodi:namedview
+   pagecolor="#ffffff"
+   bordercolor="#666666"
+   borderopacity="1"
+   objecttolerance="10"
+   gridtolerance="10"
+   guidetolerance="10"
+   inkscape:pageopacity="0"
+   inkscape:pageshadow="2"
+   inkscape:window-width="1121"
+   inkscape:window-height="652"
+   id="namedview9"
+   showgrid="false"
+   inkscape:zoom="16.857143"
+   inkscape:cx="8"
+   inkscape:cy="7.3855932"
+   inkscape:window-x="0"
+   inkscape:window-y="0"
+   inkscape:window-maximized="0"
+   inkscape:current-layer="Capa_1"
+   fit-margin-top="0"
+   fit-margin-left="0"
+   fit-margin-right="0"
+   fit-margin-bottom="0" />
+<path
+   inkscape:connector-curvature="0"
+   style="fill:#3465a4"
+   id="path5"
+   d="M 12.25525,0 1.74475,0 C 0.781375,0 0,0.7688571 0,1.7194286 L 0,10.280571 C 0,11.230285 0.783125,12 1.74475,12 l 10.5105,0 C 13.218625,12 14,11.232 14,10.280571 L 14,1.7194286 C 14,0.7697143 13.216875,0 12.25525,0 z m -0.44275,9.8571422 -9.625,0 0,-7.7142851 9.625,0 z"
+   inkscape:transform-center-x="-2.1800847"
+   inkscape:transform-center-y="0.55932202"
+   sodipodi:nodetypes="sssssssssccccc"
+   inkscape:export-xdpi="77"
+   inkscape:export-ydpi="77" /><polygon
+   style="fill:#3465a4"
+   id="polygon7"
+   points="10,7 6,4 6,10 "
+   inkscape:transform-center-x="-2.9976167"
+   inkscape:transform-center-y="0.51271215"
+   transform="matrix(1.203125,0,0,0.78571429,-2.40625,0.2857143)"
+   inkscape:export-xdpi="77"
+   inkscape:export-ydpi="77" />
+</svg>

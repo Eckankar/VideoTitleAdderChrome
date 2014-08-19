@@ -16,7 +16,7 @@ YTTA.CLASS_RESTRICTED_ICON = 'ytta-restricted-icon';
 YTTA.CLASS_VIDEOLENGTH = 'ytta-video-length';
 
 YTTA.EXTENSION_ID = chrome.i18n.getMessage('@@extension_id');
-YTTA.EMBED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/embed.ico';
+YTTA.EMBED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/embed.svg';
 YTTA.RESTRICTED_IMG = 'chrome-extension://' + YTTA.EXTENSION_ID + '/icons/restricted.gif';
 
 
