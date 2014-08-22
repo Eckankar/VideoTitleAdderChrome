@@ -85,7 +85,8 @@ function addTitle(resp) {
     var e = $('a['+YTTA.ATTR_ID+'='+id+']:not(['+YTTA.ATTR_VISITED+'])').first();
     e.attr(YTTA.ATTR_VISITED, 'true');
 
-    var isImage = e.find('img').length > 0;
+    var isImage = e.find('img').length > 0 ||
+                  document.location.href.match(/reddit\.com/) && e.hasClass('thumbnail');
     if (YTTA.links && !isImage || YTTA.image && isImage) {
         var text = '<b>YT: ' + title;
         if (YTTA.timestamp) { text += ' (' + videolength + ')'; }
