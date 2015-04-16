@@ -73,14 +73,17 @@ function youtubifyLinks(target) {
 }
 
 function addTitle(resp) {
-    var gdata = resp.response;
     var id = resp.videoid;
+    var gdata = resp.response.items[0];
+    if (!gdata) return;
 
-    var title = gdata.entry.title.$t;
+    console.log(gdata);
+
+    var title = gdata.snippet.title;
     var videolength = getVideoLength(gdata);
     var thumbnails = getThumbnails(gdata);
     var upvotepercent = getUpvotePercent(gdata);
-    var isrestricted = getRestrictedInfo(gdata);
+    var isrestricted = false; // XXX: Get working on API v3? getRestrictedInfo(gdata);
 
     var e = $('a['+YTTA.ATTR_ID+'='+id+']:not(['+YTTA.ATTR_VISITED+'])').first();
     e.attr(YTTA.ATTR_VISITED, 'true');
@@ -169,19 +172,16 @@ function addTitle(resp) {
 }
 
 function getThumbnails(gdata) {
-    var rawThumbs = gdata.entry.media$group.media$thumbnail;
-    var thumbs = [];
+    var thumbs = [gdata.snippet.thumbnails.medium];
 
-    for (var i = 1; i < rawThumbs.length; i++) {
-        thumbs.push(rawThumbs[i]);
-    }
     return thumbs;
 }
 
 function getUpvotePercent(gdata) {
     try {
-        var rating = gdata.entry.gd$rating;
-        var percentage = 100*(rating.average - rating.min)/(rating.max - rating.min);
+        var up   = gdata.statistics.likeCount;
+        var down = gdata.statistics.dislikeCount;
+        var percentage = 100*up/(up+down);
         return percentage;
     } catch (e) {
         return undefined;
@@ -214,25 +214,34 @@ function zeroPad(n, len) {
     return (new Array(len).join("0") + n).slice(-len);
 }
 
+// Inspired by http://stackoverflow.com/a/29153059/79061
+function parseDuration(dur) {
+    var matches = dur.match(/(-)?P(?:([\.,\d]+)Y)?(?:([\.,\d]+)M)?(?:([\.,\d]+)W)?(?:([\.,\d]+)D)?T(?:([\.,\d]+)H)?(?:([\.,\d]+)M)?(?:([\.,\d]+)S)?/);
+
+    var pDur = {
+        sign: matches[1] === undefined ? '+' : '-',
+        years: matches[2] === undefined ? 0 : matches[2],
+        months: matches[3] === undefined ? 0 : matches[3],
+        weeks: matches[4] === undefined ? 0 : matches[4],
+        days: matches[5] === undefined ? 0 : matches[5],
+        hours: matches[6] === undefined ? 0 : matches[6],
+        minutes: matches[7] === undefined ? 0 : matches[7],
+        seconds: matches[8] === undefined ? 0 : matches[8]
+    };
+
+    return pDur;
+}
+
 function getVideoLength(gdata) {
-    var secs = gdata.entry.media$group.yt$duration.seconds;
-    var mins = 0, hrs = 0;
-    var length = "";
-
-    if (secs >= 60*60) {
-        hrs = Math.floor(secs / (60*60));
-        secs -= hrs * 60 * 60;
+    var dur = parseDuration(gdata.contentDetails.duration);
+    var secs = dur.seconds, mins = dur.minutes, hrs = dur.hours;
+    var length = zeroPad(secs, 2);
+    if (hrs > 0 || mins > 0) {
+        length = zeroPad(mins, 2) + ":" + length;
     }
-
-    mins = Math.floor(secs / 60);
-    secs -= mins * 60;
-
     if (hrs > 0) {
-        length = hrs + ":" + zeroPad(mins, 2);
-    } else {
-        length = mins;
+        length = hrs + ":" + length;
     }
-    length += ":" + zeroPad(secs, 2);
 
     return length;
 }

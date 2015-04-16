@@ -2,7 +2,7 @@ chrome.extension.onMessage.addListener(
   function(request, sender, sendResponse) {
     if (request.name == "fetchPage") {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', "http://gdata.youtube.com/feeds/api/videos/" + request.videoid + "?alt=json", true);
+        xhr.open('GET', "https://www.googleapis.com/youtube/v3/videos?id=" + request.videoid + "&part=snippet,contentDetails,statistics&key=AIzaSyBUd0hFaYWyHwbNYKobR3af9utLz4zn6j4", true);
         xhr.onreadystatechange = function (evt) {
             if (xhr.readyState == 4) {
                 if (xhr.status == 200) {

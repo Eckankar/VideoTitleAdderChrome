@@ -32,8 +32,9 @@ html body img.ytta-embed-icon {
 /* div. to increase specificity; makes the border override on reddit comments */
 div.ytta-tooltip h1 {
     font-size: 9pt;
-    max-width: 360px;
+    max-width: 320px;
     border: 0px;
+    display: block;
 }
 
 .ytta-tooltip div img {
