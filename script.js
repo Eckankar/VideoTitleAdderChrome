@@ -179,8 +179,8 @@ function getThumbnails(gdata) {
 
 function getUpvotePercent(gdata) {
     try {
-        var up   = gdata.statistics.likeCount;
-        var down = gdata.statistics.dislikeCount;
+        var up   = 1*gdata.statistics.likeCount;
+        var down = 1*gdata.statistics.dislikeCount;
         var percentage = 100*up/(up+down);
         return percentage;
     } catch (e) {
