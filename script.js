@@ -236,11 +236,10 @@ function getVideoLength(gdata) {
     var dur = parseDuration(gdata.contentDetails.duration);
     var secs = dur.seconds, mins = dur.minutes, hrs = dur.hours;
     var length = zeroPad(secs, 2);
-    if (hrs > 0 || mins > 0) {
-        length = zeroPad(mins, 2) + ":" + length;
-    }
     if (hrs > 0) {
-        length = hrs + ":" + length;
+        length = hrs + ":" + zeroPad(mins, 2) + ":" + length;
+    } else {
+        length = mins + ":" + length;
     }
 
     return length;
