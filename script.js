@@ -145,11 +145,9 @@ function addTitle(resp) {
     }
 
     if (YTTA.tooltip) {
-        var tooltip = '<h1>' + title;
-        if (YTTA.timestamptooltip) { tooltip += '<span class="'+YTTA.CLASS_VIDEOLENGTH+'">(' + videolength + ')</span>'; }
-        tooltip += '</h1>';
+        if (YTTA.timestamptooltip) { title += '<span class="'+YTTA.CLASS_VIDEOLENGTH+'">(' + videolength + ')</span>'; }
 
-        tooltip += '<div>';
+        tooltip = '<div>';
         for (var i = 0; i < thumbnails.length; i++) {
             var thumb = thumbnails[i];
             tooltip += '<img src="' + thumb['url'] + '" ' +
@@ -164,10 +162,17 @@ function addTitle(resp) {
             tooltip += '</div>';
         }
 
-        e.simpletip( {
-            baseClass: 'ytta-tooltip',
-            content: tooltip
-        } );
+        $(e).qtip( {
+            content: {
+                title: title,
+                text: tooltip
+            },
+            position: {
+                adjust: { x: 5, y: 5 },
+                target: 'mouse'
+            },
+            style: "qtip-light ytta-tooltip"
+        });
     }
 }
 

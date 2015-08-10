@@ -15,8 +15,8 @@
     "content_scripts": [ {
         "exclude_globs": [ "https://*.youtube.com/*", "https://youtube.com/*", "http://*.youtube.com/*", "http://youtube.com/*", "http://*.google.*/search\\?*" ],
         "include_globs": [ "*" ],
-        "css": [ "inject.css" ],
-        "js": [ "jquery.min.js", "jquery.simpletip-1.3.1.pack.js", "script.js" ],
+        "css": [ "jquery.qtip.min.css", "inject.css" ],
+        "js": [ "jquery.min.js", "jquery.qtip.min.js", "script.js" ],
         "matches": [ "http://*/*", "https://*/*" ]
     } ],
 

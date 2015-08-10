@@ -18,23 +18,8 @@ html body img.ytta-embed-icon {
     display: block;
 }
 
-.ytta-tooltip {
-    position: absolute;
-    z-index: 100;
-    display: none;
-    top: 0;
-    left: 0;
-
-    background-color: white;
-    border: 1px solid black;
-}
-
-/* div. to increase specificity; makes the border override on reddit comments */
-div.ytta-tooltip h1 {
-    font-size: 9pt;
-    max-width: 320px;
-    border: 0px;
-    display: block;
+.ytta-tooltip .qtip-content {
+    padding: 0px;
 }
 
 .ytta-tooltip div img {
