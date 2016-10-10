@@ -167,6 +167,9 @@ function addTitle(resp) {
                 title: title,
                 text: tooltip
             },
+            show: {
+              delay: 1000
+            },
             position: {
                 adjust: { x: 5, y: 5 },
                 target: 'mouse'
