@@ -8,6 +8,7 @@
   "HTML Tidy for Windows (vers 14 February 2006), see www.w3.org" />
   <script src="jquery.min.js"></script>
   <script src="options.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
   <style>
     .attr-text {
         font-size: x-small;
@@ -27,59 +28,122 @@
 
     <form name="titleform" id="YTTA">
       <ul>
-        <li>Show video names on textual YouTube links:<br />
-        <input type="radio" value="1" name="textlinks" id="linkon" />
-        Enabled<br />
-        <input type="radio" value="0" name="textlinks" id="linkoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Show video names on textual YouTube links:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="linkon" name="textlinks" />
+              <label for="linkon"></label>
+            </div>
+          </div>
+        </li>
 
-        <li>Show video names on YouTube links if they contain an image:<br />
-        <input type="radio" value="1" name="imglinks" id="imageon" />
-        Enabled<br />
-        <input type="radio" value="0" name="imglinks" id="imageoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Show video names on YouTube links if they contain an image:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="imageon" name="imglinks" />
+              <label for="imageon"></label>
+            </div>
+          </div>
+        </li>
 
-        <li>Replace link text if it's just an url:<br />
-        <input type="radio" value="1" name="replacename" id="replaceon" />
-        Enabled<br />
-        <input type="radio" value="0" name="replacename" id="replaceoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Replace link text if it's just an url:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="replaceon" name="replacename" />
+              <label for="replaceon"></label>
+            </div>
+          </div>
+        </li>
 
-        <li>Show inline embed buttons for YouTube links:<br />
-        <input type="radio" value="1" name="embed" id="embedon" />
-        Enabled<br />
-        <input type="radio" value="0" name="embed" id="embedoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Show inline embed buttons for YouTube links:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="embedon" name="embed" />
+              <label for="embedon"></label>
+            </div>
+          </div>
+        </li>
 
-        <li>Place embed button on the left side of links:<br />
-        <input type="radio" value="1" name="embedleft" id="embedlefton" />
-        Enabled<br />
-        <input type="radio" value="0" name="embedleft" id="embedleftoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Place embed button on the left side of links:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="embedlefton" name="embedleft" />
+              <label for="embedlefton"></label>
+            </div>
+          </div>
+        </li>
 
-        <li>Show tooltip with information when hovering over YouTube links:<br />
-        <input type="radio" value="1" name="tooltip" id="tooltipon" />
-        Enabled<br />
-        <input type="radio" value="0" name="tooltip" id="tooltipoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Show tooltip with information when hovering over YouTube links:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="tooltipon" name="tooltip" />
+              <label for="tooltipon"></label>
+            </div>
+          </div>
+        </li>
         
-        <li>Add video length to link text:<br />
-        <input type="radio" value="1" name="timestamp" id="timestampon" />
-        Enabled<br />
-        <input type="radio" value="0" name="timestamp" id="timestampoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Add video length to link text:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="timestampon" name="timestamp" />
+              <label for="timestampon"></label>
+            </div>
+          </div>
+        </li>
         
-        <li>Add video length to tooltip:<br />
-        <input type="radio" value="1" name="timestamptooltip" id="timestamptooltipon" />
-        Enabled<br />
-        <input type="radio" value="0" name="timestamptooltip" id="timestamptooltipoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Add video length to tooltip:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="timestamptooltipon" name="timestamptooltip" />
+              <label for="timestamptooltipon"></label>
+            </div>
+          </div>
+        </li>
         
-        <li>Show icon next to link if video is restricted in your country:<br />
-        <input type="radio" value="1" name="restrictedicon" id="restrictediconon" />
-        Enabled<br />
-        <input type="radio" value="0" name="restrictedicon" id="restrictediconoff" />
-        Disabled<br /></li>
+        <li>
+          <div>
+            <div class="label">
+              <span>Show icon next to link if video is restricted in your country:</span>
+            </div>
+            
+            <div class="slideThree">  
+              <input type="checkbox" value="None" id="restrictediconon" name="restrictedicon" />
+              <label for="restrictediconon"></label>
+            </div>
+          </div>
+        </li>
       </ul>
 
       <center>

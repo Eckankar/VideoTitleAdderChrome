@@ -7,12 +7,10 @@ function save_options() {
         var key = opts[i];
         var elms = document.getElementsByName(key);
 
-        for (var j = 0; j < elms.length; j++) {
-            var child = elms[j];
-            if (child.checked) {
-                newOptions[key] = child.value;
-                break;
-            }
+        if (elms) {
+            var elm = elms[0];
+
+            newOptions[key] = elm.checked ? 1 : 0;
         }
     }
 
