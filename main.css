@@ -1,0 +1,45 @@
+body {
+  background-color: tomato;
+  font-family: 'Raleway', sans-serif;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5em;
+}
+
+li {
+  list-style: none;
+  margin: 30px;
+}
+
+button {
+  font-size: 1em;
+}
+
+button:hover {
+  font-size: 1.1em;
+}
+
+a:link {
+    text-decoration: none;
+    color: black;
+}
+
+a:visited {
+    text-decoration: none;
+    color: black;
+}
+
+a:hover {
+    font-size: 1.1em;
+}
+
+#YTTA {
+  margin: 0 auto;
+}
+
+.attr-text {
+    font-size: x-small;
+    color: darkgray;
+    text-align: left;
