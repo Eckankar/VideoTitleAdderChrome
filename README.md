@@ -2,7 +2,7 @@
 
 [![N|Solid][storeimgsmall]][store]
 
-Video Title Adder is a [Chrome Extension][store] that adds the title and hover preview of any YouTube&trade; video in the referring link.
+Video Title Adder is a [Chrome Extension][store] that adds the video title to the end of any YouTube&trade;-link.
 
 !["VTA in Action!"][screenshot1]
 
