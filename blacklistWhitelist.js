@@ -14,8 +14,15 @@ var whitelist = [];
 // found in beginList.
 // addBeginning: Str -> listof(Str)
 function addBeginning(inString){
-	var beginList = ["www.", "https://", "http://"];
+	var beginList = ["https://", "http://"];
+	var returnList = [];
+	var tempUrl;
+	for (var i = 0; i < beginList.length; i++){
+		tempUrl = beginList[i] + inString;
+		returnList.push(tempUrl);
+	}
 
+	return returnList;
 };
 
 // addBlacklist takes a string and adds the url to the list of banned
@@ -61,6 +68,10 @@ function remWhitelist(inString){
 // can be implemented.
 function checkList(inUrl, inList){
 	for (var i = 0; i < inList.length; i++){
-		
+		if (inUrl === inList[i]){
+			return true;
+		}
 	}
-}
+
+	return false;
+};
