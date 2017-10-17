@@ -27,13 +27,7 @@ function restore_options() {
 
             var value = resp[key];
             var elms = document.getElementsByName(key);
-            for (var j = 0; j < elms.length; j++) {
-                var child = elms[j];
-                if (child.value == value) {
-                    child.checked = "true";
-                    break;
-                }
-            }
+            elms[0].checked = value == 1 ? true : false;
         }
     });
 }
