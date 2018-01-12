@@ -77,8 +77,6 @@ function addTitle(resp) {
     var gdata = resp.response.items[0];
     if (!gdata) return;
 
-    console.log(gdata);
-
     var title = gdata.snippet.title;
     var videolength = getVideoLength(gdata);
     var thumbnails = getThumbnails(gdata);
