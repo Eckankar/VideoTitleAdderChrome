@@ -31,6 +31,7 @@ $(document).ready(function () {
         YTTA.timestamptooltip = resp["timestamptooltip"]*1;
         YTTA.restrictedicon = resp["restrictedicon"]*1;
         YTTA.embedleft = resp["embedleft"]*1;
+        YTTA.showEmbeddedPlayer = resp["showEmbeddedPlayer"]*1;
 
         var MutationObserver = window.MutationObserver || window.WebKitMutationObserver;
         var observer = new MutationObserver( function (mutations) {
@@ -110,7 +111,7 @@ function addTitle(resp) {
             var embedhtml = '<img src="' + YTTA.EMBED_IMG + '" ' +
                             'class="' + YTTA.CLASS_EMBED_ICON + '" ' +
                             'title="Click to play video inline." />' +
-                            '<div class="' + YTTA.CLASS_EMBED_DISABLED + '">' +
+                            '<div class="' + (YTTA.showEmbeddedPlayer ? YTTA.CLASS_EMBED_ENABLED : YTTA.CLASS_EMBED_DISABLED) + '">' +
                             embed +
                             '</div>';
             var embedimg;
