@@ -126,6 +126,8 @@ function addTitle(resp) {
             }
 
             embedimg.on('click', function (e) {
+                e.preventDefault();
+                e.stopPropagation();
                 var embeddiv = $(e.target).next();
                 if (embeddiv.hasClass(YTTA.CLASS_EMBED_DISABLED)) {
                     embeddiv.removeClass(YTTA.CLASS_EMBED_DISABLED);
