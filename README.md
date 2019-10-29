@@ -1,5 +1,15 @@
 # Video Title Adder for Chrome&trade;
 
+## Update 2019-10-29:
+
+As per today, the extension has been taken off the web store. I was contacted by YouTube with regards to an API audit of the project, and I simply do not have the time or energy to go through their audit process for what I consider simply a fun side project. I'm sorry to all the users of the extension it inconveniences.
+
+If anyone else wishes to pick up the project and take it from here, you have my blessing. 
+
+Notes for a future project maintainer: The project is in working order at the time of writing. If you choose to pick up the project, you will need to review the [YouTube API Services - Developer Policies](https://developers.google.com/youtube/terms/developer-policies) and bring the extension into compliance. Once thing it for sure lacks is a privacy policy.
+
+-----
+
 [![N|Solid][storeimgsmall]][store]
 
 Video Title Adder is a [Chrome Extension][store] that adds the video title to the end of any YouTube&trade;-link.
